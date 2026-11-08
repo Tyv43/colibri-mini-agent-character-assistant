@@ -28,8 +28,8 @@ Download and run [Colibri](https://github.com/) — an OpenAI-compatible local L
 
 **Windows (PowerShell):**
 ```powershell
-Set-Location 'D:\AI_models\colibri-v2.1.0-windows-x86_64'
-.\colibri web --model 'D:\AI_models\models\qwen35' --host 127.0.0.1 --port 8000 --api-key '1' --allowed-host <your_local_ip> --no-browser
+Set-Location '/path/to/colibri'
+.\colibri web --model '/path/to/model' --host 127.0.0.1 --port 8000 --api-key '1' --allowed-host <your_local_ip> --no-browser
 ```
 
 **Linux/macOS:**
@@ -182,7 +182,7 @@ The model continues the dialog seamlessly — no interruption.
   "colibri": {
     "base_url": "http://127.0.0.1:8000/v1",
     "api_key": "1",
-    "model": "qwen3.5-9b-ds9-uss-defiant-nm-colibri",
+    "model": "your-model-name",
     "cache_slot": 0,
     "temperature": 0.7,
     "enable_thinking": false

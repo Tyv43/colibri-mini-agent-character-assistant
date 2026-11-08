@@ -42,7 +42,7 @@ FIELDS = [
         "path": "colibri.model",
         "label": "Model",
         "type": "string",
-        "help": "Model name (e.g., qwen3.5-9b-ds9-uss-defiant-nm-colibri)",
+        "help": "Model name (e.g., your-model-name)",
     },
     {
         "path": "colibri.cache_slot",

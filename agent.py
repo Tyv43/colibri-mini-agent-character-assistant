@@ -27,7 +27,7 @@ from core.session import Session
 from core.permissions import MODES
 
 
-DEFAULT_MODEL = "qwen3.5-9b-ds9-uss-defiant-nm-colibri"
+DEFAULT_MODEL = "your-model-name"
 DEFAULT_SYSTEM_PROMPT = (
     "You are a local agent. Be brief, no reasoning. "
     "To run a command write:\n"
