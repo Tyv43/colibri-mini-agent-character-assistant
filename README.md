@@ -6,7 +6,7 @@
 ![Mode](https://img.shields.io/badge/Modes-agent%20%7C%20rp__agent%20%7C%20chat-orange)
 ![Donations](https://img.shields.io/badge/Donations-Crypto-yellow)
 
-A lightweight local AI agent for [Colibri](https://github.com/) (OpenAI-compatible API) with manual approval, tmux-based UI, streaming responses, roleplay persona support, and automatic context rotation. Zero external dependencies — Python 3.10+ stdlib only. ~1500 lines of code.
+A lightweight local AI agent for [Colibri](https://github.com/JustVugg/colibri) (OpenAI-compatible API) with manual approval, tmux-based UI, streaming responses, roleplay persona support, and automatic context rotation. Zero external dependencies — Python 3.10+ stdlib only. ~1500 lines of code.
 
 ## Features
 
@@ -30,7 +30,7 @@ A lightweight local AI agent for [Colibri](https://github.com/) (OpenAI-compatib
 
 ### Install Colibri
 
-Download and run [Colibri](https://github.com/) — an OpenAI-compatible local LLM server.
+Download and run [Colibri](https://github.com/JustVugg/colibri) — an OpenAI-compatible local LLM server.
 
 **Windows (PowerShell):**
 ```powershell
