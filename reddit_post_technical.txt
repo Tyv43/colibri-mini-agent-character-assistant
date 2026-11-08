@@ -1,0 +1,42 @@
+Title: [Release] Colibri Mini Agent — lightweight local AI agent with roleplay persona support, context rotation, and zero dependencies (Python 3.10+ stdlib only, ~1500 LoC)
+
+Body:
+
+I built a lightweight local AI agent for Colibri (OpenAI-compatible API) that supports:
+
+- **Three modes**: pure CLI agent, roleplay persona + commands (chara_card_v2), pure chat roleplay
+- **Automatic context rotation**: when context hits 75%, it generates a structured summary, archives the session, and restores it — the model continues seamlessly
+- **Save/Load dialogs**: `/save` archives and compacts, `/load N` restores
+- **chara_card_v2 support**: SillyTavern character card format, with separate directives for agent vs chat modes
+- **Tmux UI**: 3 panels (chat, command approval, health/context bar)
+- **Interactive config editor**: `python3 config_editor.py`
+- **Zero external dependencies**: Python 3.10+ stdlib only, no pip install needed
+- **~1500 lines of code**, GPL 3.0
+
+## How it works
+
+Commands are written in ```cmd blocks — the agent parses them, asks for approval (y/n), and executes. No tools API overhead (~260 token savings vs function calling).
+
+Context rotation monitors `/health` and `/profile` API endpoints. When threshold is reached, it sends a summary request to the model, gets a structured handoff (GOAL, DURABLE FACTS, WORK DONE, CURRENT STATE, RECENT CONVERSATION), and rebuilds the session with a [CONTEXT RESTORE] block.
+
+## KV cache advantage
+
+Colibri's `cache_slot` keeps the KV cache on the server between requests — only new tokens are processed, making responses near-instant. The agent also works with other OpenAI-compatible servers (llama.cpp, Ollama, vLLM, LM Studio) using a fallback estimation for context rotation.
+
+## Quick start
+
+```bash
+# Start Colibri
+./colibri web --model /path/to/model --host 127.0.0.1 --port 8000 --api-key '1' --no-browser
+
+# Start agent
+python3 agent.py
+```
+
+## GitHub
+
+https://github.com/Tyv43/colibri-mini-agent-character-assistant
+
+Three example configs in `examples/` (agent, rp_agent, chat). Persona system supports custom character cards, language directives, and context restore templates.
+
+Would love feedback! Especially on the context rotation approach — I wanted something that doesn't just truncate history but actually generates a proper handoff summary.

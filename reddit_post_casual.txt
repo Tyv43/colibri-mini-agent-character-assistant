@@ -1,0 +1,34 @@
+Title: [Release] Colibri Mini Agent — a lightweight local AI agent that doesn't choke your local LLM
+
+Body:
+
+Hey everyone. I've been running local LLMs for a while and kept running into the same problem — agent frameworks like OpenClaw are powerful but heavy. By the time the model processes all the tool schemas, system prompts, and orchestration logic, your local model is barely responsive. I wanted something that lets the model actually work instead of spending most of its context on framework overhead.
+
+So I built Colibri Mini Agent. It's ~1500 lines of Python, zero external dependencies (stdlib only, no pip install), and it's at least 30x faster to start than OpenClaw.
+
+The core idea: instead of using the tools/function-calling API, the model writes commands in plain ```cmd blocks. The agent parses them, asks you for approval (y/n), and runs them. That's it. No JSON schema parsing, no middleware, no 500-token tool definitions. Saves about 260 tokens per request.
+
+It works best with Colibri (OpenAI-compatible local LLM server) because of KV cache reuse — the server caches your conversation between requests, so only new tokens get processed. But it also works with llama.cpp, Ollama, vLLM, LM Studio, or anything else that speaks OpenAI API.
+
+Three modes:
+- **agent** — pure CLI agent, no persona
+- **rp_agent** — roleplay character + commands (uses chara_card_v2, same format as SillyTavern)
+- **chat** — pure roleplay, no commands
+
+The roleplay part is what I'm most excited about. You give it a character card and the agent actually embodies that character while running commands on your system. Commands become the character's actions, not meta-instructions. In chat mode it's just conversation — no system access. I included a sample character (Aura, a kind and responsible AI assistant) but you can swap in any chara_card_v2.
+
+Other stuff it does:
+- Automatic context rotation — when you hit 75% of the context window, it generates a structured summary, archives the session, and restores it so the model keeps going without losing context
+- Save/load dialogs (`/save` to archive, `/load N` to restore)
+- Tmux UI with chat, command approval, and health panels
+- Interactive config editor
+- Shell injection guard, command whitelist, permission modes
+
+GitHub: https://github.com/Tyv43/colibri-mini-agent-character-assistant
+
+I'd really love feedback on three things:
+1. The ```cmd block approach vs tools API — does anyone else find the tools API too heavy for local models?
+2. Context rotation via summary generation instead of just truncating old messages
+3. The roleplay persona system — is this useful, or am I overcomplicating it?
+
+Thanks!
