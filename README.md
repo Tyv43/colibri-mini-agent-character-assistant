@@ -193,7 +193,7 @@ The model continues the dialog seamlessly — no interruption.
   "tools": null,
   "colibri": {
     "base_url": "http://127.0.0.1:8000/v1",
-    "api_key": "",
+    "api_key": "1",
     "model": "your-model-name",
     "cache_slot": 0,
     "temperature": 0.7,
@@ -271,7 +271,7 @@ Features:
 ## Architecture
 
 ```
-colibri-mini-agent-v3-en/
+colibri-mini-agent-character-assistant/
 ├── agent.py                    # Entry point: tmux (default), chat, commands, log, health
 ├── config.json                  # Configuration
 ├── config_editor.py             # Interactive config editor
