@@ -187,7 +187,7 @@ The model continues the dialog seamlessly — no interruption.
   "tools": null,
   "colibri": {
     "base_url": "http://127.0.0.1:8000/v1",
-    "api_key": "1",
+    "api_key": "",
     "model": "your-model-name",
     "cache_slot": 0,
     "temperature": 0.7,
@@ -209,7 +209,7 @@ The model continues the dialog seamlessly — no interruption.
   "context": {
     "enabled": true,
     "threshold": 75,
-    "summary_max_tokens": 1200,
+    "summary_max_tokens": 3000,
     "recent_messages_keep": 4,
     "archive_dir": "sessions"
   }
