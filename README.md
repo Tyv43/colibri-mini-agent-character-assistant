@@ -315,7 +315,14 @@ The client sends browser-compatible parameters:
 - `GET /health` — context window size, live generation tokens
 - `GET /profile` — last completed turn token counts
 
-**Non-Colibri servers**: The agent works with any OpenAI-compatible API (llama.cpp, Ollama, vLLM, LM Studio). Context rotation falls back to character-based estimation (~4 chars/token). KV cache reuse is only available on Colibri — on other servers, the full history is re-processed each request (slower but functional).
+**Non-Colibri servers**: The agent works with any OpenAI-compatible API:
+- llama.cpp (`./server --model /path/to/model --port 8000`)
+- Ollama (`ollama serve`)
+- vLLM (`python -m vllm.entrypoints.openai.api_server`)
+- LM Studio (built-in OpenAI-compatible server)
+- Text Generation WebUI (--api flag)
+
+Context rotation falls back to character-based estimation (~4 chars/token) when `/health` or `/profile` are unavailable. KV cache reuse (`cache_slot`) is Colibri-specific — on other servers, the full history is re-processed each request (slower but functional). All other features (commands, persona, save/load, config editor, tmux UI) work on any server.
 
 ## Tmux
 
