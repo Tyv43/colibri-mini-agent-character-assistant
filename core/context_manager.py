@@ -93,14 +93,23 @@ class ContextManager:
             return json.load(resp)
 
     def read_context(self) -> dict:
-        """Read current context usage from Colibri API."""
+        """Read current context usage from Colibri API.
+
+        Tries /health + /profile (Colibri-specific). Falls back to
+        character-based estimation if endpoints are unavailable.
+        """
         server = self._server_url()
 
-        # /health — context window size + live generation
-        health = self._get_json(f"{server}/health")
-        context_length = int(health.get("context_tokens", 0))
+        # Try Colibri /health endpoint
+        try:
+            health = self._get_json(f"{server}/health")
+            context_length = int(health.get("context_tokens", 0))
+        except Exception:
+            # Fallback: estimate from history size
+            return self._estimate_context()
+
         if not context_length:
-            raise RuntimeError("Server did not report context_tokens in /health")
+            return self._estimate_context()
 
         live = health.get("live") or []
         if live:
@@ -119,7 +128,11 @@ class ContextManager:
             }
 
         # /profile — last completed turn
-        profile = self._get_json(f"{server}/profile")
+        try:
+            profile = self._get_json(f"{server}/profile")
+        except Exception:
+            return self._estimate_context(context_length)
+
         turns = profile.get("turns") or []
         if not turns:
             return {
@@ -141,6 +154,24 @@ class ContextManager:
             "usage_percent": self._last_usage_percent,
             "active": False,
             "source": "/profile (last completed turn)",
+        }
+
+    def _estimate_context(self, context_length: int = 65536) -> dict:
+        """Estimate context usage from history size (fallback).
+
+        Used when /health or /profile are unavailable (non-Colibri servers).
+        Estimates ~4 characters per token.
+        """
+        history_chars = sum(len(json.dumps(m, ensure_ascii=False)) for m in self.session.history)
+        estimated_tokens = history_chars // 4
+        self._last_context_tokens = estimated_tokens
+        self._last_usage_percent = estimated_tokens * 100 / context_length if context_length else 0
+        return {
+            "context_length": context_length,
+            "total_tokens": estimated_tokens,
+            "usage_percent": self._last_usage_percent,
+            "active": False,
+            "source": "estimated (~4 chars/token)",
         }
 
     def needs_compaction(self) -> bool:
