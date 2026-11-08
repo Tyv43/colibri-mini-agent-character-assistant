@@ -20,6 +20,40 @@ A local AI agent that runs commands through [Colibri](https://github.com/) (Open
 - **Health panel** — pings Colibri every 5s, shows latency, agent state, context usage bar, command count, and recent log
 - **Config editor** — interactive TUI for editing config.json with field validation and choices
 
+## Prerequisites
+
+### Install Colibri
+
+Download and run [Colibri](https://github.com/) — an OpenAI-compatible local LLM server.
+
+**Windows (PowerShell):**
+```powershell
+Set-Location 'D:\AI_models\colibri-v2.1.0-windows-x86_64'
+.\colibri web --model 'D:\AI_models\models\qwen35' --host 127.0.0.1 --port 8000 --api-key '1' --no-browser
+```
+
+**Linux/macOS:**
+```bash
+./colibri web --model /path/to/model --host 0.0.0.0 --port 8000 --api-key '1' --no-browser
+```
+
+Key parameters:
+- `--model` — path to your model (e.g., Qwen 3.5)
+- `--host` — bind address (`0.0.0.0` for LAN access, `127.0.0.1` for local only)
+- `--port` — API port (default 8000)
+- `--api-key` — API key (use any string, must match `colibri.api_key` in config.json)
+- `--no-browser` — don't auto-open browser
+
+### Install tmux (optional, for 3-panel UI)
+
+```bash
+# Debian/Ubuntu
+sudo apt install tmux
+
+# macOS
+brew install tmux
+```
+
 ## Quick Start
 
 ```bash
@@ -145,7 +179,7 @@ The model continues the dialog seamlessly — no interruption.
   },
   "tools": null,
   "colibri": {
-    "base_url": "http://192.168.1.68:8000/v1",
+    "base_url": "http://127.0.0.1:8000/v1",
     "api_key": "1",
     "model": "qwen3.5-9b-ds9-uss-defiant-nm-colibri",
     "cache_slot": 0,

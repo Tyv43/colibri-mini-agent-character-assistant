@@ -30,7 +30,7 @@ FIELDS = [
         "path": "colibri.base_url",
         "label": "Colibri URL",
         "type": "string",
-        "help": "Colibri API URL (e.g., http://192.168.1.68:8000/v1)",
+        "help": "Colibri API URL (e.g., http://127.0.0.1:8000/v1)",
     },
     {
         "path": "colibri.api_key",
