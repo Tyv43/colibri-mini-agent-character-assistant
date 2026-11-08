@@ -304,17 +304,18 @@ The client sends browser-compatible parameters:
 
 | Parameter | Value | Purpose |
 |---|---|---|
-| `cache_slot` | 0 | KV cache prefix reuse |
+| `cache_slot` | 0 | KV cache prefix reuse — the server caches the conversation between requests, so only new tokens are processed. This makes responses near-instant on Colibri. |
 | `context_compaction` | "auto" | Auto-compress long contexts |
 | `enable_thinking` | false | Disable reasoning (faster) |
 | `stream_options` | {include_usage: true} | Token stats in final chunk |
 | `temperature` | 0.7 | Balanced sampling |
 | `max_tokens` | not sent | No limit (model decides) |
 
-Context manager uses:
+**Colibri-specific endpoints** (used for context rotation):
 - `GET /health` — context window size, live generation tokens
 - `GET /profile` — last completed turn token counts
-- `POST /chat/completions` — summary generation (with `cache_slot=0`)
+
+**Non-Colibri servers**: The agent works with any OpenAI-compatible API (llama.cpp, Ollama, vLLM, LM Studio). Context rotation falls back to character-based estimation (~4 chars/token). KV cache reuse is only available on Colibri — on other servers, the full history is re-processed each request (slower but functional).
 
 ## Tmux
 
