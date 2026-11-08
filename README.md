@@ -1,6 +1,11 @@
-# Colibri Mini Agent v3
+# Colibri Mini Agent — Character Assistant
 
-A local AI agent that runs commands through [Colibri](https://github.com/) (OpenAI-compatible API) with manual approval, tmux-based UI, streaming responses, roleplay persona support, and automatic context rotation.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![License](https://img.shields.io/badge/License-GPL%203.0-red)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-green)
+![Mode](https://img.shields.io/badge/Modes-agent%20%7C%20rp__agent%20%7C%20chat-orange)
+
+A lightweight local AI agent for [Colibri](https://github.com/) (OpenAI-compatible API) with manual approval, tmux-based UI, streaming responses, roleplay persona support, and automatic context rotation. Zero external dependencies — Python 3.10+ stdlib only. ~1500 lines of code.
 
 ## Features
 
