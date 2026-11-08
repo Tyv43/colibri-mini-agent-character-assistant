@@ -4,6 +4,7 @@
 ![License](https://img.shields.io/badge/License-GPL%203.0-red)
 ![Dependencies](https://img.shields.io/badge/Dependencies-None-green)
 ![Mode](https://img.shields.io/badge/Modes-agent%20%7C%20rp__agent%20%7C%20chat-orange)
+![Donations](https://img.shields.io/badge/Donations-Crypto-yellow)
 
 A lightweight local AI agent for [Colibri](https://github.com/) (OpenAI-compatible API) with manual approval, tmux-based UI, streaming responses, roleplay persona support, and automatic context rotation. Zero external dependencies — Python 3.10+ stdlib only. ~1500 lines of code.
 
@@ -394,3 +395,17 @@ This is a service restoration of a previous conversation...
 6. **Test with low threshold** — set `context.threshold` to 3-5% during testing to trigger rotation quickly, then set to 75% for production.
 
 7. **Don't use `first_mes` from card for greeting** — the agent sends its own greeting prompt. `first_mes` is for reference only.
+
+---
+
+## Support
+
+If this project was helpful, consider leaving a star or sharing it.
+
+Donations are welcome but never required:
+
+| Network | Address |
+|---|---|
+| ETH (ERC-20) | `0x9D5d8471859b72065DCcb2ae01d82A25568157B0` |
+| TRX (TRC-20) | `TQbpxA5b8en4rw3rJ5KrkyAMWXb18wBdpk` |
+| BTC | `bc1q0lu4kxsf9322tfwe40fhzkef97cjuxcja6upkg` |
