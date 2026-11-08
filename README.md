@@ -35,12 +35,12 @@ Download and run [Colibri](https://github.com/JustVugg/colibri) — an OpenAI-co
 **Windows (PowerShell):**
 ```powershell
 Set-Location '/path/to/colibri'
-.\colibri web --model '/path/to/model' --host 127.0.0.1 --port 8000 --api-key '1' --allowed-host <your_local_ip> --no-browser
+.\colibri web --model '/path/to/model' --host 127.0.0.1 --port 8000 --api-key 'your_api_key' --allowed-host <your_local_ip> --no-browser
 ```
 
 **Linux/macOS:**
 ```bash
-./colibri web --model /path/to/model --host 0.0.0.0 --port 8000 --api-key '1' --allowed-host <your_local_ip> --no-browser
+./colibri web --model /path/to/model --host 0.0.0.0 --port 8000 --api-key 'your_api_key' --allowed-host <your_local_ip> --no-browser
 ```
 
 Key parameters:
@@ -193,7 +193,7 @@ The model continues the dialog seamlessly — no interruption.
   "tools": null,
   "colibri": {
     "base_url": "http://127.0.0.1:8000/v1",
-    "api_key": "1",
+    "api_key": "your_api_key",
     "model": "your-model-name",
     "cache_slot": 0,
     "temperature": 0.7,
