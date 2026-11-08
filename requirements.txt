@@ -1,0 +1,18 @@
+# Colibri Mini Agent — Character Assistant
+
+No external dependencies. Requires Python 3.10+ (uses `str | None` union syntax).
+
+## Optional
+
+- **tmux** — for the 3-panel UI (`apt install tmux`)
+- **Colibri** — OpenAI-compatible local LLM server (https://github.com/)
+
+## Install
+
+```bash
+git clone https://github.com/yourname/colibri-mini-agent-character-assistant.git
+cd colibri-mini-agent-character-assistant
+python3 agent.py
+```
+
+No `pip install` needed — the project uses only Python standard library (`urllib`, `json`, `subprocess`, `threading`, `os`, `re`, `tempfile`, `time`, `pathlib`).

@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Session & runtime
+session.json
+session.json.tmp
+*.tmp
+
+# Workspace (agent working directory)
+workspace/*
+
+# Session archives
+sessions/*
+
+# Agent state & logs
+workspace/.state.json
+workspace/.cmd_fifo
+workspace/.agent.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

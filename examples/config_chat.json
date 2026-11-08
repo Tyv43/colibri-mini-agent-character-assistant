@@ -1,0 +1,35 @@
+{
+  "mode": "chat",
+  "prompt": {
+    "system": "You are a local agent. To run a shell command, output a ```cmd block with three backticks. Example:\n```cmd\nuname -a\n```\nOne command at a time. Only use commands when you actually need to do something on the system."
+  },
+  "tools": null,
+  "colibri": {
+    "base_url": "http://127.0.0.1:8000/v1",
+    "api_key": "",
+    "model": "qwen3.5-9b-ds9-uss-defiant-nm-colibri",
+    "cache_slot": 0,
+    "temperature": 0.8,
+    "enable_thinking": false
+  },
+  "agent": {
+    "workspace": "workspace",
+    "command_timeout": 60,
+    "max_steps": 4,
+    "max_tokens": null,
+    "permission_mode": "ask",
+    "approval_location": "chat",
+    "auto_continue": false,
+    "max_history_messages": 30,
+    "max_history_chars": 60000,
+    "session_file": "session.json",
+    "fresh_start": true
+  },
+  "context": {
+    "enabled": true,
+    "threshold": 80,
+    "summary_max_tokens": 3000,
+    "recent_messages_keep": 6,
+    "archive_dir": "sessions"
+  }
+}
