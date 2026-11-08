@@ -29,12 +29,12 @@ Download and run [Colibri](https://github.com/) — an OpenAI-compatible local L
 **Windows (PowerShell):**
 ```powershell
 Set-Location 'D:\AI_models\colibri-v2.1.0-windows-x86_64'
-.\colibri web --model 'D:\AI_models\models\qwen35' --host 127.0.0.1 --port 8000 --api-key '1' --no-browser
+.\colibri web --model 'D:\AI_models\models\qwen35' --host 127.0.0.1 --port 8000 --api-key '1' --allowed-host <your_local_ip> --no-browser
 ```
 
 **Linux/macOS:**
 ```bash
-./colibri web --model /path/to/model --host 0.0.0.0 --port 8000 --api-key '1' --no-browser
+./colibri web --model /path/to/model --host 0.0.0.0 --port 8000 --api-key '1' --allowed-host <your_local_ip> --no-browser
 ```
 
 Key parameters:
@@ -42,6 +42,7 @@ Key parameters:
 - `--host` — bind address (`0.0.0.0` for LAN access, `127.0.0.1` for local only)
 - `--port` — API port (default 8000)
 - `--api-key` — API key (use any string, must match `colibri.api_key` in config.json)
+- `--allowed-host` — allowed host IP for external access (use your machine's LAN IP)
 - `--no-browser` — don't auto-open browser
 
 ### Install tmux (optional, for 3-panel UI)
