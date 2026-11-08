@@ -130,6 +130,12 @@ Standard format. Key fields used:
 - `scenario` — setting description
 - `mes_example` — dialogue examples (use ` ```cmd ``` ` blocks, not ` ```bash ``` `)
 
+### Default Character: Aura
+
+The project ships with a built-in character — **Aura**, a kind, responsible AI assistant who's aware she's an AI, works with your system carefully (states commands, explains effects, checks safety, asks confirmation), and prefers lightweight commands. She's designed to be genuinely helpful without being sycophantic.
+
+To use a custom character, replace `persona/character.json` with your own chara_card_v2 file. Any SillyTavern character card should work.
+
 ## Context Rotation
 
 When context usage reaches the threshold (75% by default), the agent automatically:
